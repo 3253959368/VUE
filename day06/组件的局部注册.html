@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../JS/vue.js"></script>
+</head>
+<body>
+    <h1>组件的局部命名</h1>
+    <div id="app">
+        <hello></hello>
+        <calc></calc>
+    </div>
+</body>
+<script>
+    // component 组件     template  模板
+    let hello={
+        data:function(){
+            return{
+                msg:'我是组件'
+            }
+        },
+        template:'<h3>{{msg}}</h3>'
+    };
+    //计数的组件
+    let calc={
+        data:()=>{
+            return{
+                n:0
+            }
+        },
+        template:`<div>
+            <h3>{{n}}</h3>
+            <button @click='add'>+</button>
+            </div>`,
+        methods:{
+            add(){
+                this.n++
+            }
+        }
+    };
+    let vm=new Vue({
+        el:'#app',
+        data:{
+
+        },
+        components:{
+            'hello':hello,
+            'calc':calc
+        }
+    })
+</script>
+</html>

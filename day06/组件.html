@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../JS/vue.js"></script>
+</head>
+<body>
+    <h1>组件</h1>
+    组件注册注意事项
+    1.组件参数的data值必须是函数,返回{}
+    2.模板必须是单个根元素
+    3.组件模板的内容可以是’模板字符串‘
+    命名
+    如果使用驼峰命名组件
+
+    <div id="app">
+        <!-- <hell-world></hell-world> -->
+        <calc></calc>
+        <calc></calc>
+        <calc></calc>
+    </div>
+</body>
+<script>
+    // component 组件     template  模板
+    Vue.component('hell-world',{
+        data:function(){
+            return{
+                msg:'我是组件'
+            }
+        },
+        template:'<h3>{{msg}}</h3>'
+    });
+    //计数的组件
+    Vue.component('calc',{
+        data:()=>{
+            return{
+                n:0
+            }
+        },
+        template:`<div>
+            <h3>{{n}}</h3>
+            <button @click='add'>+</button>
+            </div>`,
+        methods:{
+            add(){
+                this.n++
+            }
+        }
+    })
+    let vm=new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../JS/vue.js"></script>
+</head>
+<body>
+    <h1>父传子</h1>
+    <div id="app">
+        <blog :ptitle="title" :bunm="num" :plock="lock" :pbarr="barr" :pobj="obj"></blog>
+    </div>
+</body>
+<script>
+    //博客子组件
+    Vue.component('blog',{
+        props:['ptitle','bunm','plock','pbarr','pobj'],
+        template:`<div>
+            <h3>博客</h3>
+            <h4>{{ptitle}}</h4>
+            <h4>{{bunm}}</h4>
+            <h4>{{plock}}</h4>
+            <h4>{{pbarr}}</h4>
+            <p v-for='int,k in pbarr'>{{k}}--{{int}}</p>
+            <p v-for='int,k in pobj'>{{k}}--{{int}}</p>
+            </div>`
+    })
+    //根组件
+    let vm=new Vue({
+        el:'#app',
+        data:{
+            title:'你是覅就',
+            num:'99',
+            lock:true,
+            barr:['ddo','fwswf','wffw','wfe'],
+            obj:{
+                as:'dfie',
+                age:22
+            }
+        },
+        // components:{
+        //     'hello':hello,
+        //     'calc':calc
+        // }
+    })
+</script>
+</html>
